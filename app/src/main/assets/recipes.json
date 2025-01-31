@@ -1,0 +1,120 @@
+[
+  {
+    "id": 1,
+    "recipeName": "Avocado Toast",
+    "image": "avocado_toast",
+    "cookingTime": 10,
+    "ingredients": [
+      "1 slice whole grain bread",
+      "1/2 avocado",
+      "1/2 tsp lemon juice",
+      "Salt & pepper to taste",
+      "Chili flakes (optional)"
+    ],
+    "instructions": [
+      "Toast the bread until golden brown.",
+      "Mash the avocado in a bowl with lemon juice, salt, and pepper.",
+      "Spread the mashed avocado on the toast.",
+      "Sprinkle chili flakes if desired.",
+      "Serve immediately."
+    ],
+    "difficulty": "EASY",
+    "categories": "BREAKFAST",
+    "isFavorite": false
+  },
+  {
+    "id": 2,
+    "recipeName": "Classic Grilled Cheese",
+    "image": "classic_grilled_cheese",
+    "cookingTime": 15,
+    "ingredients": [
+      "2 slices of bread",
+      "2 slices of cheddar cheese",
+      "1 tbsp butter"
+    ],
+    "instructions": [
+      "Heat a skillet over medium heat.",
+      "Butter one side of each slice of bread.",
+      "Place one slice (butter side down) in the skillet and add cheese.",
+      "Cover with the second slice (butter side up).",
+      "Cook until golden brown on both sides.",
+      "Serve hot."
+    ],
+    "difficulty": "EASY",
+    "categories": "FAST_FOOD",
+    "isFavorite": false
+  },
+  {
+    "id": 3,
+    "recipeName": "Spicy Chicken Burger",
+    "image": "spicy_chicken_burger",
+    "cookingTime": 30,
+    "ingredients": [
+      "1 chicken breast",
+      "1 burger bun",
+      "1 tbsp hot sauce",
+      "1 lettuce leaf",
+      "1 tomato slice",
+      "1 tbsp mayonnaise"
+    ],
+    "instructions": [
+      "Season the chicken breast with hot sauce and grill it until fully cooked.",
+      "Toast the burger bun lightly.",
+      "Spread mayonnaise on the bottom bun.",
+      "Place the grilled chicken, lettuce, and tomato.",
+      "Cover with the top bun and serve."
+    ],
+    "difficulty": "MEDIUM",
+    "categories": "FAST_FOOD",
+    "isFavorite": false
+  },
+  {
+    "id": 4,
+    "recipeName": "Banana Oat Pancakes",
+    "image": "banana_oat_pancakes",
+    "cookingTime": 15,
+    "ingredients": [
+      "1 ripe banana",
+      "1/2 cup rolled oats",
+      "1/2 cup milk (or almond milk)",
+      "1 egg",
+      "1/2 teaspoon baking powder",
+      "1/2 teaspoon cinnamon",
+      "1 teaspoon honey (optional)"
+    ],
+    "instructions": [
+      "Mash the banana in a bowl.",
+      "Mix in oats, milk, egg, baking powder, cinnamon, and honey.",
+      "Heat a non-stick pan and lightly grease it.",
+      "Pour small amounts of batter to form pancakes.",
+      "Cook for 2-3 minutes on each side until golden brown.",
+      "Serve warm with honey or fruit."
+    ],
+    "difficulty": "EASY",
+    "categories": "BREAKFAST",
+    "isFavorite": false
+  },
+  {
+    "id": 5,
+    "recipeName": "Berry Smoothie Bowl",
+    "image": "berry_smoothie_bowl",
+    "cookingTime": 5,
+    "ingredients": [
+      "1 cup frozen mixed berries",
+      "1 banana",
+      "1/2 cup yogurt",
+      "1/2 cup almond milk",
+      "1 tablespoon honey",
+      "Granola, coconut flakes, and fresh berries for topping"
+    ],
+    "instructions": [
+      "Blend the frozen berries, banana, yogurt, almond milk, and honey until smooth.",
+      "Pour the smoothie into a bowl.",
+      "Top with granola, coconut flakes, and fresh berries.",
+      "Serve immediately."
+    ],
+    "difficulty": "EASY",
+    "categories": "BREAKFAST",
+    "isFavorite": true
+  }
+]
