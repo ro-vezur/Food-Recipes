@@ -115,6 +115,6 @@
     ],
     "difficulty": "EASY",
     "categories": "BREAKFAST",
-    "isFavorite": true
+    "isFavorite": false
   }
 ]
