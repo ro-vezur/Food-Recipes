@@ -1,4 +1,4 @@
-package com.example.foodrecipes.presentation.Home.Adapters
+package com.example.foodrecipes.presentation.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

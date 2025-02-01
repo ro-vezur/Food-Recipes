@@ -1,21 +1,21 @@
-package com.example.foodrecipes.presentation.Home.Adapters
+package com.example.foodrecipes.presentation.adapters
 
 import android.content.Context
-import android.content.res.Resources
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.foodrecipes.R
 import com.example.foodrecipes.data.dtos.Recipe
 import com.example.foodrecipes.databinding.ItemRecipeCardBinding
-import java.util.zip.Inflater
 
 class RecipesAdapter(
     private val recipesList: List<Recipe>,
     private val context: Context
 ): RecyclerView.Adapter<RecipesAdapter.RecipesViewHolder>() {
+
+    var itemClick: ((Recipe) -> Unit)? = null
 
     inner class RecipesViewHolder(
         private val binding: ItemRecipeCardBinding,
@@ -27,11 +27,25 @@ class RecipesAdapter(
             )
 
             with(binding) {
+
+                if(recipe.isFavorite) {
+                    icFavorite.setImageResource(R.drawable.ic_filled_favorite)
+                } else {
+                    icFavorite.setImageResource(R.drawable.ic_outline_favorite)
+                }
+
                 Glide.with(root.context)
                     .load(foodImageId)
                     .into(ivRecipeImage)
+
                 tvRecipeName.text = recipe.recipeName
                 tvRecipeCategory.text = recipe.categories.title
+            }
+        }
+
+        init {
+            binding.root.setOnClickListener {
+                itemClick?.invoke(recipesList[adapterPosition])
             }
         }
     }
