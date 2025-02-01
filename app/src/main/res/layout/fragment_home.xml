@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.Home.Home">
+    tools:context=".presentation.Home.HomeFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -49,6 +49,7 @@
         android:layout_margin="16dp"
         android:backgroundTint="?android:colorSecondary"
         android:src="@drawable/ic_add"
+        app:maxImageSize="30dp"
         app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

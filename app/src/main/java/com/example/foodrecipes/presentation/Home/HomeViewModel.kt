@@ -24,8 +24,7 @@ class HomeViewModel @Inject constructor(
 
     init {
         getAllRecipes()
-
-        mutableSelectedCategory.value = RecipeCategories.ALL
+        setCategory(RecipeCategories.ALL)
     }
 
     fun setCategory(category: RecipeCategories) = viewModelScope.launch {
