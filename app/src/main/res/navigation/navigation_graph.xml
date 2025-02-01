@@ -7,17 +7,44 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.example.foodrecipes.presentation.Home.Home"
+        android:name="com.example.foodrecipes.presentation.Home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/home_fragment_to_detailed_recipe"
+            app:destination="@id/detailed_recipe_fragment"/>
+
+    </fragment>
+
     <fragment
         android:id="@+id/favorites"
-        android:name="com.example.foodrecipes.presentation.Favorites"
+        android:name="com.example.foodrecipes.presentation.favorites.Favorites"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+
+        <action
+            android:id="@+id/favorites_fragment_to_detailed_recipe"
+            app:destination="@id/detailed_recipe_fragment"/>
+
+    </fragment>
+
     <fragment
         android:id="@+id/settings"
         android:name="com.example.foodrecipes.presentation.Settings"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/detailed_recipe_fragment"
+        android:name="com.example.foodrecipes.presentation.detailedRecipe.DetailedRecipeFragment"
+        android:label="fragment_detailed_recipe_fragment"
+        tools:layout="@layout/fragment_detailed_recipe_fragment" >
+
+        <argument
+            android:name="id"
+            app:argType="string"/>
+
+    </fragment>
+
 </navigation>
