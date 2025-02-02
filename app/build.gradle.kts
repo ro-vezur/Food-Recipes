@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.cli.jvm.main
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -40,6 +42,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+    sourceSets {
+
+    }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -80,5 +86,8 @@ dependencies {
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
     implementation(libs.room.ktx)
+
+    //recycler view
+    implementation(libs.recyclerview)
 
 }
