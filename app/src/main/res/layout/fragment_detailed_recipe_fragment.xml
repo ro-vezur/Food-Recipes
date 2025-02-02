@@ -8,17 +8,16 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical"
-        android:paddingHorizontal="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
@@ -108,8 +107,8 @@
                 android:id="@+id/rvInstruction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
                 android:layout_marginBottom="15dp"
+                android:nestedScrollingEnabled="false"
                 tools:listitem="@layout/item_instruction" />
 
         </LinearLayout>
@@ -117,17 +116,17 @@
 
     </androidx.core.widget.NestedScrollView>
 
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_favorite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
+        android:layout_margin="15dp"
         android:backgroundTint="?android:colorSecondary"
         android:src="@drawable/ic_outline_favorite"
         app:maxImageSize="36dp"
         app:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

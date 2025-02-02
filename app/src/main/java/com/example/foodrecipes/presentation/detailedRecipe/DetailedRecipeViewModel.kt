@@ -4,14 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.foodrecipes.data.dtos.Recipe
+import com.example.foodrecipes.data.dtos.recipe.Recipe
 import com.example.foodrecipes.data.repositories.RecipesRepository
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @HiltViewModel(assistedFactory = DetailedRecipeViewModel.Factory::class)
 class DetailedRecipeViewModel @AssistedInject constructor(
