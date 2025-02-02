@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = binding.navHostFragmentContainer.getFragment<NavHostFragment>()
         navController = navHostFragment.findNavController()
 
-    //    applicationContext.deleteDatabase(RECIPES_DB_NAME)
+        //  applicationContext.deleteDatabase(RECIPES_DB_NAME)
 
 
         binding.bottomNavigationView.setupWithNavController(navController)

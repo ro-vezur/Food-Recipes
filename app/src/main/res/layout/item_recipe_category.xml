@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="4dp"
-    app:cardBackgroundColor="?android:colorPrimary">
+    android:background="@drawable/sel_recipe_category_bg"
+    android:elevation="4dp">
 
     <TextView
         android:id="@+id/tvCategoryName"
@@ -15,7 +14,12 @@
         android:layout_height="wrap_content"
         android:padding="12dp"
         android:text="Category"
-        android:textColor="@android:color/white"
+        android:textColor="@color/sel_recipe_category_text"
         android:textSize="16sp"
-        android:textStyle="bold" />
-</androidx.cardview.widget.CardView>
+        android:textStyle="bold"
+        android:duplicateParentState="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
