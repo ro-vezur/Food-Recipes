@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.foodrecipes.R
-import com.example.foodrecipes.data.dtos.Recipe
+import com.example.foodrecipes.data.dtos.recipe.Recipe
 import com.example.foodrecipes.databinding.ItemRecipeCardBinding
 
 class RecipesAdapter(
@@ -26,6 +26,7 @@ class RecipesAdapter(
                 recipe.image,"drawable",context.packageName
             )
 
+
             with(binding) {
 
                 if(recipe.isFavorite) {
@@ -39,7 +40,7 @@ class RecipesAdapter(
                     .into(ivRecipeImage)
 
                 tvRecipeName.text = recipe.recipeName
-                tvRecipeCategory.text = recipe.categories.title
+                tvRecipeCategory.text = recipe.categories.joinToString { it.title }
             }
         }
 
