@@ -1,4 +1,4 @@
-package com.example.foodrecipes.data.dtos
+package com.example.foodrecipes.data.dtos.recipe
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -12,9 +12,9 @@ data class Recipe(
     val recipeName: String,
     val image: String,
     val cookingTime: Int,
-    val ingredients: List<String>,
+    val ingredients: List<Ingredient>,
     val instructions: List<String>,
     val difficulty: RecipeDifficulty,
-    val categories: RecipeCategories,
+    val categories: List<RecipeCategories>,
     val isFavorite: Boolean = false,
 )
