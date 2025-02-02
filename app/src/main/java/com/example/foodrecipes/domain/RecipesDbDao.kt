@@ -4,8 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Update
-import com.example.foodrecipes.data.dtos.Recipe
+import com.example.foodrecipes.data.dtos.recipe.Recipe
 
 @Dao
 interface RecipesDbDao {
@@ -13,9 +12,9 @@ interface RecipesDbDao {
     @Query("SELECT * FROM recipes")
     suspend fun getAllRecipes(): List<Recipe>
 
-    @Query("SELECT * FROM recipes WHERE categories == :category")
+    @Query("SELECT * FROM recipes WHERE categories LIKE :category")
     suspend fun getRecipesWithCategory(
-        category: String
+        category: String,
     ): List<Recipe>
 
     @Query("SELECT * FROM recipes WHERE id == :id")
@@ -26,7 +25,7 @@ interface RecipesDbDao {
     @Query("SELECT * FROM recipes WHERE isFavorite == 1")
     suspend fun gerFavoriteRecipes(): List<Recipe>
 
-    @Query("SELECT * FROM recipes WHERE isFavorite == 1 AND categories = :category")
+    @Query("SELECT * FROM recipes WHERE isFavorite == 1 AND categories LIKE :category")
     suspend fun getFavoriteRecipesWithCategory(
         category: String
     ): List<Recipe>

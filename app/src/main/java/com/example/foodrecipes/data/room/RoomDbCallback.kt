@@ -1,9 +1,10 @@
 package com.example.foodrecipes.data.room
 
 import android.content.Context
+import android.util.Log
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.foodrecipes.data.dtos.Recipe
+import com.example.foodrecipes.data.dtos.recipe.Recipe
 import com.example.foodrecipes.domain.RecipesDbDao
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -22,6 +23,16 @@ class RoomDbCallback @Inject constructor(
 
         CoroutineScope(Dispatchers.IO).launch {
             populateDatabase(provider.get(),context)
+        }
+    }
+
+    override fun onOpen(db: SupportSQLiteDatabase) {
+        super.onOpen(db)
+
+        CoroutineScope(Dispatchers.IO).launch {
+            if(provider.get().getAllRecipes().isEmpty()) {
+                populateDatabase(provider.get(),context)
+            }
         }
     }
 
