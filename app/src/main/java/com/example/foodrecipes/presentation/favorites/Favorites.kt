@@ -35,7 +35,7 @@ class Favorites : Fragment() {
 
         navController = findNavController()
 
-        observeSelectedCategory()
+        setCategoriesRecyclerView()
         observeFavoriteRecipes()
 
         return binding.root
@@ -46,25 +46,23 @@ class Favorites : Fragment() {
         _binding = null
     }
 
-    private fun observeSelectedCategory() {
-        favoritesViewModel.selectedCategoryLiveData.observe(viewLifecycleOwner) { category ->
-            val adapter = CategoriesAdapter(category,requireContext())
+    private fun setCategoriesRecyclerView() {
+        val categoriesAdapter = CategoriesAdapter(favoritesViewModel.selectedCategoryPosition)
 
-            adapter.itemClick = { categoryToSelect ->
-                favoritesViewModel.setCategory(categoryToSelect)
-                if(categoryToSelect == RecipeCategories.ALL) {
-                    favoritesViewModel.getAllFavoriteRecipes()
-                } else {
-                    favoritesViewModel.getFavoriteRecipesWithCategory(categoryToSelect.name)
-                }
-            }
+        categoriesAdapter.itemClick = { categoryToSelect, position ->
+            favoritesViewModel.selectedCategoryPosition = position
 
-            with(binding) {
-                rvCategories.layoutManager = LinearLayoutManager(
-                    requireContext(),LinearLayoutManager.HORIZONTAL,false)
-                rvCategories.adapter = adapter
+            if(categoryToSelect == RecipeCategories.ALL) {
+                favoritesViewModel.getAllFavoriteRecipes()
+            } else {
+                favoritesViewModel.getFavoriteRecipesWithCategory(categoryToSelect.name)
             }
         }
+
+        binding.rvCategories.layoutManager = LinearLayoutManager(
+            requireContext(),LinearLayoutManager.HORIZONTAL,false
+        )
+        binding.rvCategories.adapter = categoriesAdapter
     }
 
     private fun observeFavoriteRecipes() {
