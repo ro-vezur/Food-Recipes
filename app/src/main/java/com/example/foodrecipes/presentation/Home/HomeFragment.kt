@@ -1,6 +1,7 @@
 package com.example.foodrecipes.presentation.Home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,11 +11,13 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.foodrecipes.data.enums.RecipeCategories
 import com.example.foodrecipes.databinding.FragmentHomeBinding
 import com.example.foodrecipes.presentation.adapters.CategoriesAdapter
 import com.example.foodrecipes.presentation.adapters.RecipesAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -26,6 +29,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var navController: NavController
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -36,7 +40,7 @@ class HomeFragment : Fragment() {
         navController = findNavController()
 
         observeRecipeList()
-        observeSelectedCategory()
+        setCategoriesRecyclerView()
 
         return binding.root
     }
@@ -50,35 +54,37 @@ class HomeFragment : Fragment() {
         homeViewModel.recipesListLiveData.observe(viewLifecycleOwner) { recipes ->
             val adapter = RecipesAdapter(recipes,requireContext())
 
+            adapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
             adapter.itemClick = { recipe ->
                 val action = HomeFragmentDirections.homeFragmentToDetailedRecipe(recipe.id.toString())
                 navController.navigate(action)
             }
 
-            binding.rvRecipes.layoutManager = GridLayoutManager(requireContext(),2)
             binding.rvRecipes.adapter = adapter
         }
     }
 
-    private fun observeSelectedCategory() {
-        homeViewModel.selectedCategoryLiveData.observe(viewLifecycleOwner) { category ->
 
-            val adapter = CategoriesAdapter(category,requireContext())
+    private fun setCategoriesRecyclerView() {
+        val categoriesAdapter = CategoriesAdapter( homeViewModel.selectedCategoryPosition)
 
-            adapter.itemClick = { categoryToSelect ->
-                homeViewModel.setCategory(categoryToSelect)
-                if(categoryToSelect == RecipeCategories.ALL) {
-                    homeViewModel.getAllRecipes()
-                } else {
-                    homeViewModel.getRecipesWithCategory(categoryToSelect.name)
-                }
+        categoriesAdapter.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+
+        categoriesAdapter.itemClick = { categoryToSelect, position ->
+            homeViewModel.selectedCategoryPosition = position
+
+            if(categoryToSelect == RecipeCategories.ALL) {
+                homeViewModel.getAllRecipes()
+            } else {
+                homeViewModel.getRecipesWithCategory(categoryToSelect.name)
             }
-
-            binding.rvCategories.layoutManager = LinearLayoutManager(
-                requireContext(),LinearLayoutManager.HORIZONTAL,false
-            )
-
-            binding.rvCategories.adapter = adapter
         }
+
+        binding.rvCategories.layoutManager = LinearLayoutManager(
+            requireContext(),LinearLayoutManager.HORIZONTAL,false
+        )
+        binding.rvCategories.adapter = categoriesAdapter
     }
+
 }
